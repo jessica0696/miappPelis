@@ -16,7 +16,15 @@ class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.blue,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.blue),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text("ALL MOVIES :)"),
+        centerTitle: true,
+      ),
       body: Container(
         child: ListView(children: [
           Container(
@@ -41,10 +49,10 @@ class Description extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: modified_text(
                   text: name != null ? name : 'Not Loaded', size: 24)),
-          Container(
+          /*Container(
               padding: EdgeInsets.only(left: 10),
               child:
-                  modified_text(text: 'Releasing On - ' + launch_on, size: 14)),
+                  modified_text(text: 'Releasing On - ' + launch_on, size: 14)),*/
           Row(
             children: [
               Container(

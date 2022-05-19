@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_flutter/utils/text.dart';
-
+import '../description.dart';
 class TV extends StatelessWidget {
   final List tv;
 
@@ -24,7 +24,27 @@ class TV extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: tv.length,
                   itemBuilder: (context, index) {
-                    return Container(
+                    return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Description(
+                                    name: tv[index]['original_name'],
+                                    bannerurl:
+                                    'https://image.tmdb.org/t/p/w500' +
+                                        tv[index]['backdrop_path'],
+                                    posterurl:
+                                    'https://image.tmdb.org/t/p/w500' +
+                                        tv[index]['poster_path'],
+                                    description: tv[index]['overview'],
+                                    vote: tv[index]['vote_average']
+                                        .toString(),
+                                    launch_on: tv[index]
+                                    ['release_date'],
+                                  )));
+                        },
+                    child: Container(
                       padding: EdgeInsets.all(5),
                       // color: Colors.green,
                       width: 250,
@@ -51,6 +71,7 @@ class TV extends StatelessWidget {
                           )
                         ],
                       ),
+                    )
                     );
                   }))
         ],
